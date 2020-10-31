@@ -109,3 +109,7 @@ sudo snap install whatsdesk
 echo 'installing ao(microsoft todo)'
 sudo apt update
 sudo snap install ao
+
+echo 'installing ulauncher'
+wget -c https://github.com/Ulauncher/Ulauncher/releases/download/5.8.1/ulauncher_5.8.1_all.deb
+sudo dpkg -i ulauncher_5.8.1_all.deb
