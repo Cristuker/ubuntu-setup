@@ -129,3 +129,8 @@ echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 source ~/.zshrc
 sleep 2
 clear
+
+echo 'Installing Gnome Shell Extensions'
+sudo apt-get install chrome-gnome-shell
+sleep 2
+clear
