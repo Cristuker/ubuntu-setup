@@ -134,3 +134,8 @@ echo 'Installing Gnome Shell Extensions'
 sudo apt-get install chrome-gnome-shell
 sleep 2
 clear
+
+echo 'Installing Gnome Tweak Tool'
+sudo apt install gnome-tweak-tool
+sleep 2
+clear
