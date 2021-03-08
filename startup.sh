@@ -1,3 +1,5 @@
+echo "Run this script o root directory!!!";
+
 sudo apt-get update
 
 echo 'Installing curl' 
@@ -21,6 +23,21 @@ echo "What email do you want to use in GIT user.email?"
 echo "For example, mine will be \"cristian123105@gmail.com\""
 read git_config_user_email
 git config --global user.email $git_config_user_email
+sleep 2
+clear
+
+echo "Add another git configs"
+cd ~
+echo "
+    [user]
+        email = $git_config_user_email
+        name = $git_config_user_name
+    [core]
+        editor = code --wait
+    [alias]
+        s = !git status -s # git status whit less information
+        c = !git add --all && git commit -m #git add and git commit alias
+        l = !git log --pretty=format:'%C(blue)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr' #Format git log message" >>.gitconfig
 sleep 2
 clear
 
