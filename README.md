@@ -10,13 +10,17 @@ Script para agilizar a instalação de algumas coisas após a formatação do S.
 * VScode e adiciona como default editor
 * Chorme
 * Slack for desktop
+* Discord
+* Spotify
 * Dbeaver
 * docker
 * docker-compose
 * snap-store
+* flatpak
 * Vivaldi
 * Ulauncher
 * zsh
+* Oh-My-Zsh
 * nvm
 * Installing autosuggestions (ZSH Plugin)
 * Installing Gnome Shell Extensions

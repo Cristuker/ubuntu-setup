@@ -62,9 +62,13 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 sleep 2
 clear
 
+echo 'Installing flatpak'
+sudo apt install flatpak
+sleep 2
+clear
+
 echo 'Installing slack' 
-wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.8-amd64.deb
-sudo apt install ./slack-desktop-*.deb -y
+flatpak install flathub com.slack.Slack
 sleep 2
 clear
 
@@ -100,22 +104,40 @@ sudo apt install snapd -y
 sleep 2
 clear 
 
-echo 'Installing Vivaldi'
-wget -c https://downloads.vivaldi.com/stable/vivaldi-stable_3.6.2165.40-1_amd64.deb
-sudo dpkg -i vivaldi-stable_3.6.2165.40-1_amd64.deb
-sleep 2
-clear
+echo 'You want install vivaldi Browser? y/n'
+read installVivaldi
 
-echo 'Installing ulauncher'
-wget -c https://github.com/Ulauncher/Ulauncher/releases/download/5.8.1/ulauncher_5.8.1_all.deb
-sudo dpkg -i ulauncher_5.8.1_all.deb
-sleep 2
-clear
+if [ $installVivaldi = "y" ]; then
+    echo 'Installing Vivaldi'
+    wget -c https://downloads.vivaldi.com/stable/vivaldi-stable_4.3.2439.56-1_amd64.deb
+    sudo dpkg -i vivaldi-stable_3.6.2165.40-1_amd64.deb
+    sleep 2
+    clear
+fi
+
+
+echo 'You want install uLauncher? y/n'
+read installUlauncher
+if [ $installUlauncher = "y" ]; then
+    echo 'Installing ulauncher'
+    sudo add-apt-repository ppa:agornostal/ulauncher 
+    sudo apt update 
+    sudo apt install ulauncher
+    sleep 2
+    clear
+fi
 
 echo 'Installing zsh'
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 chsh -s /bin/zsh
+zsh
+sleep 2
+clear
+
+echo 'Installing Oh My Zsh'
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 sleep 2
 clear
 
@@ -157,7 +179,11 @@ sudo apt install gnome-tweak-tool
 sleep 2
 clear
 
-echo 'Installing discord via snap'
-sudo snap install discord
+echo 'Installing Discord'
+flatpak install flathub com.discordapp.Discord
 sleep 2
+clear
+
+echo 'Installing Spotify'
+flatpak install flathub com.spotify.Clientsleep 2
 clear
