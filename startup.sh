@@ -13,7 +13,7 @@ sleep 2
 clear
 
 echo "What name do you want to use in GIT user.name?"
-echo "For example, mine will be \"Cristian Silval\""
+echo "For example, mine will be \"Cristian Silva\""
 read git_config_user_name
 git config --global user.name "$git_config_user_name"
 sleep 2
@@ -67,6 +67,12 @@ sudo apt install flatpak
 sleep 2
 clear
 
+echo 'Installing snap'
+sudo apt update
+sudo apt install snapd -y
+sleep 2
+clear 
+
 echo 'Installing slack' 
 flatpak install flathub com.slack.Slack
 sleep 2
@@ -85,9 +91,11 @@ sleep 2
 clear
 
 echo 'Installing docker-compose' 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+sudo chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+docker compose version
 sleep 2
 clear
 
@@ -97,12 +105,6 @@ sudo dpkg -i dbeaver-ce_latest_amd64.deb
 sudo apt-get install -f
 sleep 2
 clear
-
-echo 'Installing snap'
-sudo apt update
-sudo apt install snapd -y
-sleep 2
-clear 
 
 echo 'You want install vivaldi Browser? y/n'
 read installVivaldi
@@ -136,6 +138,7 @@ sleep 2
 clear
 
 echo 'Installing Oh My Zsh'
+zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 sleep 2
@@ -155,8 +158,8 @@ export NVM_DIR="$HOME/.nvm"
 
 source ~/.zshrc
 nvm --version
-nvm install 12
-nvm alias default 12
+nvm install 16
+nvm alias default 16
 node --version
 npm --version
 sleep 2
