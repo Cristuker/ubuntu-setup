@@ -129,6 +129,36 @@ if [ $installUlauncher = "y" ]; then
     clear
 fi
 
+echo 'You want install Ferdi (A social media manager)? y/n'
+read installFerdi
+
+if [ $installFerdi = "y" ]; then
+    echo 'Installing Ferdi'
+    flatpak install flathub com.getferdi.Ferdi
+    sleep 2
+    clear
+fi
+
+echo 'Installing Gnome Shell Extensions'
+sudo apt-get install chrome-gnome-shell
+sleep 2
+clear
+
+echo 'Installing Gnome Tweak Tool'
+sudo apt install gnome-tweak-tool
+sleep 2
+clear
+
+echo 'Installing Discord'
+flatpak install flathub com.discordapp.Discord
+sleep 2
+clear
+
+echo 'Installing Spotify'
+flatpak install flathub com.spotify.Client
+sleep 2
+clear
+
 echo 'Installing zsh'
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -172,21 +202,4 @@ source ~/.zshrc
 sleep 2
 clear
 
-echo 'Installing Gnome Shell Extensions'
-sudo apt-get install chrome-gnome-shell
-sleep 2
-clear
-
-echo 'Installing Gnome Tweak Tool'
-sudo apt install gnome-tweak-tool
-sleep 2
-clear
-
-echo 'Installing Discord'
-flatpak install flathub com.discordapp.Discord
-sleep 2
-clear
-
-echo 'Installing Spotify'
-flatpak install flathub com.spotify.Clientsleep 2
-clear
+echo 'Now install ZI'
