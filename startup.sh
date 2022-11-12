@@ -1,6 +1,6 @@
 echo "Run this script o root directory!!!";
 
-sudo apt-get update
+sudo apt update && sudo apt upgrade
 
 echo 'Installing curl' 
 sudo apt install curl -y
@@ -113,9 +113,9 @@ if [ $installVivaldi = "y" ]; then
     echo 'Installing Vivaldi'
     wget -c https://downloads.vivaldi.com/stable/vivaldi-stable_4.3.2439.56-1_amd64.deb
     sudo dpkg -i vivaldi-stable_3.6.2165.40-1_amd64.deb
+fi
     sleep 2
     clear
-fi
 
 
 echo 'You want install uLauncher? y/n'
@@ -125,19 +125,79 @@ if [ $installUlauncher = "y" ]; then
     sudo add-apt-repository ppa:agornostal/ulauncher 
     sudo apt update 
     sudo apt install ulauncher
+fi
     sleep 2
     clear
-fi
 
 echo 'You want install Ferdi (A social media manager)? y/n'
 read installFerdi
 
 if [ $installFerdi = "y" ]; then
     echo 'Installing Ferdi'
-    flatpak install flathub com.getferdi.Ferdi
+    flatpak install flathub com.getferdi.Ferdi -y
+fi
     sleep 2
     clear
+
+echo 'You want to install Microsoft Teams? y/n'
+read installTeams
+
+if [ $installTeams = "y" ]; then
+    echo 'Installing teams'
+    flatpak install flathub com.microsoft.Teams -y
 fi
+    sleep 2
+    clear
+
+echo 'You want to install postman? y/n'
+read installPostman
+
+if [ $installPostman = "y" ]; then
+    wget https://dl.pstmn.io/download/latest/linux64
+    tar -xzvf linux64
+fi
+    sleep 2
+    clear
+
+echo 'You want install todoist? y/n'
+read installTodoist
+
+if [ $installTodoist = "y" ]; then
+    sudo snap install todoist
+fi
+    sleep 2
+    clear
+
+echo 'You want install WhatsApp? y/n'
+read installWhats
+
+if [ $installWhats = "y" ]; then
+    flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y
+fi
+    sleep 2
+    clear
+
+echo 'You want install telegram? y/n'
+read installTelegram
+
+if [ $installTelegram = "y" ]; then
+    flatpak install flathub org.telegram.desktop -y
+fi
+    sleep 2
+    clear
+
+echo 'You want to install github CLI? y/n'
+read installGithub
+if [ $installGithub = "y" ]; then
+    type -p curl >/dev/null || sudo apt install curl -y
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && sudo apt update \
+    && sudo apt install gh -y
+fi
+    sleep 2
+    clear
 
 echo 'Installing Gnome Shell Extensions'
 sudo apt-get install chrome-gnome-shell
@@ -158,6 +218,14 @@ echo 'Installing Spotify'
 flatpak install flathub com.spotify.Client
 sleep 2
 clear
+
+
+
+
+echo 'Remove sudo from docker...'
+sudo usermod -aG docker ${USER}
+su - ${USER}
+id -nG
 
 echo 'Installing zsh'
 sudo apt-get install zsh -y
