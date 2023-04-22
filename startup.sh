@@ -219,9 +219,6 @@ flatpak install flathub com.spotify.Client
 sleep 2
 clear
 
-
-
-
 echo 'Remove sudo from docker...'
 sudo usermod -aG docker ${USER}
 su - ${USER}
