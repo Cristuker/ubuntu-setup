@@ -57,4 +57,4 @@ $ chmod 777 startup.sh
 $ ./startup.sh
 ```
 
-<p align="center">Made whit ❤️ by <strong><a href="https://cristuker.github.io" target="blank" >Cristian</></p></strong>
+<p align="center">Made with ❤️ by <strong><a href="https://cristuker.github.io" target="blank" >Cristian</></p></strong>
